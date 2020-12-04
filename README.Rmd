@@ -1,0 +1,44 @@
+---
+title: Fish distribution indicator
+output:
+  github_document:
+    html_preview: false
+---
+
+```{r setup, echo = FALSE}
+library(icesTAF)
+library(knitr)
+```
+
+## Figure 1
+
+*Temporal development of the Lusitanian/Boreal species ratio with 5 year interval, 1965-2016*
+
+```{r figure_1, echo = FALSE}
+include_graphics("report/Figure1_temporal_ratio_map.png")
+```
+
+## Figure 2
+
+*Temporal development in the number of species of each biogeographical affinity group*
+
+```{r figure_2, echo = FALSE}
+include_graphics("report/Figure2_temporal_species_count.png")
+```
+
+## Figure 3
+
+*Temporal development of the ratio between the number of Lusitanian and Boreal species*
+
+```{r figure_3, echo = FALSE}
+include_graphics("report/Figure3_temporal_ratio_sst.png")
+```
+
+## Table 1
+
+```{r table1, echo = FALSE}
+table1_survey_overview <- read.taf("report/table1_survey_overview.csv")
+
+kable(table1_survey_overview)
+```
+
