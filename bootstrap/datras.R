@@ -30,12 +30,12 @@ source("../../../utilities.R")
 hh_list <- list()
 hl_list <- list()
 
-# loop over surveys and download (NOTE final year fixed at 2018)
+# loop over surveys and download (NOTE final year fixed at 2019)
 for (i in seq_len(nrow(toget))) {
   # which survey etc.
   survey <- toget[i, "Survey.name"]
   start.year <- toget[i, "Start.year"]
-  end.year <- pmin(2018, max(icesDatras::getSurveyYearList(survey)))
+  end.year <- pmin(2019, max(icesDatras::getSurveyYearList(survey)))
   quarter <- toget[i, "Quarter"]
   gear <- toget[i, "Gear"]
 

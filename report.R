@@ -20,7 +20,9 @@ fig1_data %>%
 
 sampled_statrecs <- unique(fig1_data["StatRec"])
 
-plot(sampled_statrecs)
+if (FALSE) {
+  plot(sampled_statrecs)
+}
 
 # equal area projection
 crs <- "+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
@@ -176,4 +178,3 @@ p <-
 
 p
 ggplot2::ggsave("Illustration1_sample_overview_map.png", path = "report/", width = 150, height = 150, units = "mm", dpi = 600)
-
