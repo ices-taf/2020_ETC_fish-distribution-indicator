@@ -52,7 +52,7 @@ b[b > 100] <- NA
 
 
 # filter for years of interest (1963 to allow for 2 year lag)
-b <- b[[which(years(b@z$time) %in% 1963:2018)]]
+b <- b[[which(years(b@z$time) %in% 1963:2019)]]
 yrs <- years(b@z$time)
 
 # group accross years
@@ -84,4 +84,3 @@ write.taf(sst, dir = "data", quote = TRUE)
 #library(ggplot2)
 #ggplot(sst, aes(x = year, y = sst, col = area)) +
 #  geom_line()
-
