@@ -69,6 +69,14 @@ lusitanian <-
     )
 
 if (FALSE) {
+  lusitanian %>%
+    filter(Survey == "SP-PORC" & Year == 2015)
+
+
+  datras %>%
+    filter(Survey == "SP-PORC" & Year == 2015)
+
+
   # checks
   lusitanian %>%
     filter(

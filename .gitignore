@@ -38,8 +38,8 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-bootstrap/data/
-bootstrap/software/
-bootstrap/library/
-data/
-model/
+/bootstrap/data/
+/bootstrap/software/
+/bootstrap/library/
+/data/
+/model/
