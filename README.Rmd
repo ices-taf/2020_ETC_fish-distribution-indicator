@@ -42,3 +42,10 @@ table1_survey_overview <- read.taf("report/table1_survey_overview.csv")
 kable(table1_survey_overview)
 ```
 
+
+## Notes
+
+* revised values for SP-NORTH in 2017, more species added
+* revised values for SP-PORC in 2011-2013 and 2015, more species added
+
+* Hadley SST data not updated for 2019

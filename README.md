@@ -50,3 +50,8 @@ Boreal species*
 | 8.c      | SP-NORTH    | BAK  |       4 |       2001 |
 | 8.d      | EVHOE       | GOV  |       4 |       1997 |
 | 9.a      | PT-IBTS     | NCT  |       4 |       2002 |
+
+## Notes
+
+  - revised values for SP-NORTH in 2017, more species added
+  - revised values for SP-PORC in 2011-2013 and 2015, more species added
