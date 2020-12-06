@@ -10,8 +10,7 @@ library(icesTAF)
 library(dplyr)
 
 # read design table and look download all required surveys
-ctab <- read.taf("../control_file/control_file.csv")
-#ctab <- read.taf("bootstrap/data/control_file/control_file.csv")
+ctab <- read.taf(taf.data.path("control_file", "control_file.csv"))
 
 # surveys to get are:
 toget <-
@@ -19,13 +18,13 @@ toget <-
     select(Survey.name, Quarter, Start.year, Gear) %>%
     unique() %>%
     group_by(Survey.name, Quarter, Gear) %>%
-    summarise(Start.year = min(Start.year)) %>%
+    summarise(Start.year = min(Start.year), .groups = "keep") %>%
     as.data.frame()
 
 
 
 # datras_fname utility from repo root:
-source("../../../utilities.R")
+source(taf.boot.path("..", "utilities.R"))
 
 hh_list <- list()
 hl_list <- list()
@@ -49,6 +48,9 @@ for (i in seq_len(nrow(toget))) {
     message("---- downloading HH ----")
     hh <- getDATRAS(record = "HH", survey = survey, year = year, quarter = quarter)
     if (!is.null(hh) && !identical(hh, FALSE)) {
+      if (survey == "SP-PORC" & year == 2015 & quarter == 3) {
+        hh$Country <- "ES"
+      }
       hh <-
         hh %>%
           select(Survey, Quarter, Country, Ship, Gear, SweepLngt,
@@ -93,3 +95,40 @@ datras_data <-
 head(datras_data)
 
 write.taf(datras_data, quote = TRUE)
+
+
+if (FALSE) {
+  ## testing
+
+  left_join(
+    hl_list[[1]],# %>% filter(StNo == 59),
+    hh_list[[1]][1, ] %>% mutate(Country = "ES"),
+    by = c(
+      "Survey", "Quarter", "Country", "Ship", "Gear", "SweepLngt",
+      "GearExp", "DoorType", "StNo", "HaulNo", "Year"
+    )
+  ) %>%
+      select(
+        Survey, Quarter, Year, StatRec, Valid_Aphia
+      ) %>%
+      unique()
+
+
+
+  x <-
+    hl_list[[1]][1, ] %>%
+      left_join(
+        hh_list[[1]][1,] %>% mutate(Country = "ES"),
+        by = c(
+          "Survey", "Quarter", "Country", "Ship", "Gear", "SweepLngt",
+          "GearExp", "DoorType", "StNo", "HaulNo", "Year"
+        )
+      ) %>%
+      select(
+        Survey, Quarter, Year, StatRec, Valid_Aphia
+      ) %>%
+      unique()
+
+head(x)
+
+}
